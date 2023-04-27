@@ -8,4 +8,9 @@ class Student(models.Model):
 
     @property
     def fio(self):
-        return f'{self.name} {self.surname}'
+        if self.name and self.surname:
+            return f'{self.name} {self.surname}'
+        return self.name or self.surname
+
+    def __repr__(self):
+        return f'Student(name="{self.name}", surname="{self.surname}", email="{self.email}")'
